@@ -25,8 +25,8 @@ RUN a2enmod rewrite
 COPY . /var/www/html/
 
 # Set permissions for the WordPress directory
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 755 /var/www
 
 # Expose port 80
 EXPOSE 80
