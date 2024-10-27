@@ -1,11 +1,8 @@
-FROM php:7.2-apache
+# Use the official PHP Apache image
+FROM php:8.1-apache
 
-COPY src/ /var/www/html/
+# Copy the PHP file to the Apache server's document root
+COPY index.php /var/www/html/
 
-RUN a2enmod rewrite
-
-# Set the working directory
-WORKDIR /var/www/html
-
-# Copy the index.php file to the container
-COPY index.php .
+# Expose port 80
+EXPOSE 80

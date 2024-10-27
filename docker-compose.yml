@@ -6,5 +6,3 @@ services:
     container_name: apache
     ports:
       - "8081:80"
-    volumes:
-      - ./src:/var/www/html
