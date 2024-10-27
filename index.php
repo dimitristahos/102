@@ -1,4 +1,6 @@
 <?php
+include 'init.php'; // Include the initialization script
+
 // Database connection
 $host = 'db';  // Use the service name defined in docker-compose.yml
 $db = 'notes_db';
@@ -15,12 +17,10 @@ $options = [
 
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
-    echo "Connected successfully"; // Add this line for debugging
 } catch (\PDOException $e) {
-    echo "Connection failed: " . $e->getMessage(); // This will print the error message
+    echo "Connection failed: " . $e->getMessage();
     exit; // Exit if connection fails
 }
-
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['note'])) {
