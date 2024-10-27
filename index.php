@@ -15,9 +15,12 @@ $options = [
 
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
+    echo "Connected successfully"; // Add this line for debugging
 } catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    echo "Connection failed: " . $e->getMessage(); // This will print the error message
+    exit; // Exit if connection fails
 }
+
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['note'])) {
