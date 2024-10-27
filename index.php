@@ -1,51 +1,17 @@
 <?php
-include 'init.php'; // Include the initialization script
+/**
+ * Front to the WordPress application. This file doesn't do anything, but loads
+ * wp-blog-header.php which does and tells WordPress to load the theme.
+ *
+ * @package WordPress
+ */
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
+/**
+ * Tells WordPress to load the WordPress theme and output it.
+ *
+ * @var bool
+ */
+define( 'WP_USE_THEMES', true );
 
-try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-    exit; // Exit if connection fails
-}
-
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['note'])) {
-    $stmt = $pdo->prepare('INSERT INTO notes (content) VALUES (?)');
-    $stmt->execute([$_POST['note']]);
-}
-
-// Fetch notes
-$stmt = $pdo->query('SELECT * FROM notes');
-$notes = $stmt->fetchAll();
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note App</title>
-</head>
-
-<body>
-    <h1>Notes App</h1>
-    <form method="POST">
-        <textarea name="note" required></textarea>
-        <button type="submit">Add Note</button>
-    </form>
-    <ul>
-        <?php foreach ($notes as $note): ?>
-            <li><?php echo htmlspecialchars($note['content']); ?></li>
-        <?php endforeach; ?>
-    </ul>
-</body>
-
-</html>
+/** Loads the WordPress Environment and Template */
+require __DIR__ . '/wp-blog-header.php';
