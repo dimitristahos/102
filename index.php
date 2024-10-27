@@ -43,7 +43,7 @@ $notes = $stmt->fetchAll();
 </head>
 
 <body>
-    <h1>Notes</h1>
+    <h1>Notes App</h1>
     <form method="POST">
         <textarea name="note" required></textarea>
         <button type="submit">Add Note</button>
