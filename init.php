@@ -1,9 +1,9 @@
 <?php
 // Database connection
-$host = 'db';  // Use the service name defined in docker-compose.yml
-$db = 'notes_db';
-$user = 'user';
-$pass = 'password';
+$host = '157.90.156.100:4535';  // Use the service name defined in docker-compose.yml
+$db = 'pop';
+$user = 'pop';
+$pass = 'pop';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

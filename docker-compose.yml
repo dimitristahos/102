@@ -5,26 +5,4 @@ services:
     build: .
     ports:
       - "8081:80"
-    depends_on:
-      db:
-        condition: service_healthy
     restart: always
-
-  db:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: notes_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-    volumes:
-      - db_data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "user", "-ppassword"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-volumes:
-  db_data:

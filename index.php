@@ -1,13 +1,6 @@
 <?php
 include 'init.php'; // Include the initialization script
 
-// Database connection
-$host = 'db';  // Use the service name defined in docker-compose.yml
-$db = 'notes_db';
-$user = 'user';
-$pass = 'password';
-$charset = 'utf8mb4';
-
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
