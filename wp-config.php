@@ -26,6 +26,7 @@ define( 'DB_NAME', 'pop' );
 /** Database username */
 define( 'DB_USER', 'pop' );
 
+
 /** Database password */
 define( 'DB_PASSWORD', 'pop' );
 
